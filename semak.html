@@ -38,6 +38,8 @@ a.btn{display:inline-flex;align-items:center;text-decoration:none}
 .lencana{display:inline-block;font-size:.75rem;padding:1px 8px;border-radius:99px;background:var(--gen-soft);color:var(--gen);margin-left:6px}
 .jmi-petunjuk,.jmi-cabar{display:none}
 .jmi-kawal{margin-top:8px}.jmi-baris{display:flex;gap:10px;align-items:center;margin:6px 0}.jmi-baris input[type=range]{flex:1;min-height:44px}.jmi-label{font:600 14px ui-monospace,Menlo,monospace;min-width:118px}.jmi-btn{min-height:44px}
+.gbr{font-size:48px;line-height:1.1;margin:6px 0}
+.skrip{margin:6px 0 8px;padding:8px 10px;border-left:4px solid var(--teal,#0E8C7F);background:var(--surface2);border-radius:8px;font-size:14px;font-style:italic}
 figure{margin:8px 0 12px;background:var(--surface2);border:1px solid var(--line);border-radius:12px;padding:8px}
 figure svg{width:100%;max-width:420px;height:auto;display:block;margin:auto}
 figcaption{font-size:.85rem;color:var(--ink3);text-align:center}
@@ -107,11 +109,15 @@ figcaption{font-size:.85rem;color:var(--ink3);text-align:center}
   var HURUF="ABCDEFGH";
   function q(s,bos,n){
     var d=document.createElement("div"); d.className="soalan"+(bos?" bos":"");
-    var h='<div class="no">'+n+(bos?'<span class="lencana">BOS</span>':"")+' · '+({pilih:"pilih satu",banyak:"pilih semua yang betul",susun:"susun mengikut urutan",nombor:"jawapan nombor",buka:"tugasan bertulis"}[s.j]||s.j)+'</div><div class="t">'+s.t+'</div>';
+    var h='<div class="no">'+n+(bos?'<span class="lencana">BOS</span>':"")+' · '+({pilih:"pilih satu",banyak:"pilih semua yang betul",susun:"susun mengikut urutan",isi:"taip jawapan",nombor:"jawapan nombor",buka:"tugasan bertulis"}[s.j]||s.j)+'</div><div class="t">'+s.t+'</div>';
+    if(s.gbr) h+='<div class="gbr" aria-hidden="true">'+s.gbr+'</div>';
+    if(s.dengar) h+='<div class="skrip"><b>Skrip (dibaca oleh suara dalam app):</b> '+s.dengar+'</div>';
     if(s.j==="pilih"||s.j==="banyak"){
       var betul=[].concat(s.b); h+='<ul class="pil">'+s.p.map(function(x,i){ return '<li class="'+(betul.indexOf(i)>=0?"betul":"")+'"><b>'+HURUF[i]+'.</b> '+x+'</li>'; }).join("")+'</ul>';
     } else if(s.j==="susun"){
       h+='<ol class="pil">'+[].concat(s.b).map(function(i){ return '<li class="betul">'+s.p[i]+'</li>'; }).join("")+'</ol>';
+    } else if(s.j==="isi"){
+      h+='<div class="jaw">Jawapan diterima: '+[].concat(s.b).join(" / ")+'</div>';
     } else if(s.j==="nombor"){
       h+='<div class="jaw">Jawapan: '+s.b+(s.suf?" "+s.suf:"")+'</div>';
     } else if(s.j==="buka"){
@@ -138,7 +144,7 @@ figcaption{font-size:.85rem;color:var(--ink3);text-align:center}
   }
   ting.onchange=function(){ isiBab(); papar(); }; bab.onchange=papar;
   $("cetak").onclick=function(){ window.print(); };
-  var awal=(/[?&]bab=(s\db\d+)/.exec(location.search)||[])[1];
+  var awal=(/[?&]bab=(e\db\d+)/.exec(location.search)||[])[1];
   if(awal&&I[awal]) ting.value=I[awal].tingkatan;
   isiBab(); if(awal&&I[awal]) bab.value=awal; papar();
 })();

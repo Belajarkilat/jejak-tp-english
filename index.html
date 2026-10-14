@@ -1221,10 +1221,10 @@ body.zon-murid{color:var(--tinta)}
 (function(){
 "use strict";
 
-/* English Tingkatan 1 (7 bab) sedia dimainkan. Bab 1-2 setiap tingkatan percuma.
+/* English Tingkatan 1 (7 bab), Tingkatan 2 hingga 5 (6 bab setiap satu) sedia dimainkan. Bab 1-2 setiap tingkatan percuma.
    Bab 3 ke atas memerlukan kelas milik guru Premium (RM23/tahun).
    Lihat bebasBab() dan premiumAktif(). */
-var JUMLAH_BAB={1:7};
+var JUMLAH_BAB={1:7,2:6,3:6,4:6,5:6};
 var BAB_TERSEDIA=[];
 Object.keys(JUMLAH_BAB).forEach(function(t){
   for(var i=1;i<=JUMLAH_BAB[t];i++) BAB_TERSEDIA.push("e"+t+"b"+i);
@@ -1313,7 +1313,79 @@ var DUNIA={
         misi:"Rules, advice and plans: learn when to say must, should, might and going to."},
   e1b7:{warna:"#1F5FBF",lembut:"#DFE8FA",gelap:"#154285",ikon:"\u{1F9F1}",
         hentian:["\u{1F4CD}","\u{1F517}","\u{1F3ED}","\u{1F3A7}","\u{1F4DC}","\u{270F}\u{FE0F}"],
-        misi:"Build better sentences with who, which, that, prepositions and the passive."}
+        misi:"Build better sentences with who, which, that, prepositions and the passive."},
+  e2b1:{warna:"#0F7B5F",lembut:"#D8F2EA",gelap:"#0A5442",ikon:"\u{1F4B0}",
+        hentian:["\u{1F9F9}","\u{1F52E}","\u{1F697}","\u{1F4FB}","\u{1F4B5}","\u{270F}\u{FE0F}"],
+        misi:"Become a Money Master: earn, save and plan what you are going to buy."},
+  e2b2:{warna:"#1B6E9C",lembut:"#DCEEF8",gelap:"#124B6B",ikon:"\u{1F6EB}",
+        hentian:["\u{1F68B}","\u{1F9F3}","\u{26F4}\u{FE0F}","\u{1F3A7}","\u{1F4D3}","\u{270F}\u{FE0F}"],
+        misi:"Take a journey around the world and tell what you have seen and done."},
+  e2b3:{warna:"#B3261E",lembut:"#FBE2E0",gelap:"#7D1A15",ikon:"\u{1F3C6}",
+        hentian:["\u{26BD}","\u{23F3}","\u{1F4AC}","\u{1F399}\u{FE0F}","\u{1F3C3}","\u{270F}\u{FE0F}"],
+        misi:"Follow the road to the final: how long have you been a fan, and who has won?"},
+  e2b4:{warna:"#D14D72",lembut:"#FBE3EA",gelap:"#93304F",ikon:"\u{1FA7A}",
+        hentian:["\u{1F915}","\u{2696}\u{FE0F}","\u{1F3E5}","\u{1F442}","\u{1F4DA}","\u{270F}\u{FE0F}"],
+        misi:"Look after yourself and your friends: health problems, advice and what you should do."},
+  e2b5:{warna:"#6B4BB0",lembut:"#EBE5F8",gelap:"#4A337A",ikon:"\u{1F3AD}",
+        hentian:["\u{1F971}","\u{1F465}","\u{1F4CA}","\u{1F3B6}","\u{1F3AC}","\u{270F}\u{FE0F}"],
+        misi:"Describe how you feel and what you think: boring or bored, much or many, isn't it?"},
+  e2b6:{warna:"#B07A10",lembut:"#FBF0D6",gelap:"#7A540A",ikon:"\u{23F3}",
+        hentian:["\u{1F4CB}","\u{1F527}","\u{1F3DA}\u{FE0F}","\u{1F4FB}","\u{1F474}","\u{270F}\u{FE0F}"],
+        misi:"Travel in time: rules then and now, what people had to do and what is done today."},
+  e3b1:{warna:"#D14D72",lembut:"#FBE3EA",gelap:"#93304F",ikon:"\u{1F9ED}",
+        hentian:["\u{1F4DA}","\u{1F527}","\u{1F4DD}","\u{1F3A7}","\u{1F4D6}","\u{270F}\u{FE0F}"],
+        misi:"Join the expedition: say what you have just done, already done and not done yet."},
+  e3b2:{warna:"#6B4BB0",lembut:"#EBE5F8",gelap:"#4A337A",ikon:"\u{1F331}",
+        hentian:["\u{1F4DA}","\u{1F527}","\u{1F4DD}","\u{1F3A7}","\u{1F4D6}","\u{270F}\u{FE0F}"],
+        misi:"Become an Eco Warrior: report what the school has done so far and what you have been doing."},
+  e3b3:{warna:"#1B6E9C",lembut:"#DCEEF8",gelap:"#124B6B",ikon:"\u{1F916}",
+        hentian:["\u{1F4DA}","\u{1F527}","\u{1F4DD}","\u{1F3A7}","\u{1F4D6}","\u{270F}\u{FE0F}"],
+        misi:"Step into the future: plans, predictions and what might happen."},
+  e3b4:{warna:"#0F7B5F",lembut:"#D8F2EA",gelap:"#0A5442",ikon:"\u{1F3ED}",
+        hentian:["\u{1F4DA}","\u{1F527}","\u{1F4DD}","\u{1F3A7}","\u{1F4D6}","\u{270F}\u{FE0F}"],
+        misi:"Follow a product from raw material to the shop with the passive."},
+  e3b5:{warna:"#B07A10",lembut:"#FBF0D6",gelap:"#7A540A",ikon:"\u{1F3EE}",
+        hentian:["\u{1F4DA}","\u{1F527}","\u{1F4DD}","\u{1F3A7}","\u{1F4D6}","\u{270F}\u{FE0F}"],
+        misi:"Celebrate with friends: describe festivals with adverbs, articles and word families."},
+  e3b6:{warna:"#B3261E",lembut:"#FBE2E0",gelap:"#7D1A15",ikon:"\u{1F957}",
+        hentian:["\u{1F4DA}","\u{1F527}","\u{1F4DD}","\u{1F3A7}","\u{1F4D6}","\u{270F}\u{FE0F}"],
+        misi:"Win the debate: give opinions, agree, disagree and say what is allowed."},
+  e4b1:{warna:"#1F5FBF",lembut:"#DFE8FA",gelap:"#154285",ikon:"\u{1F4F7}",
+        hentian:["\u{1F4DA}","\u{1F527}","\u{1F4DD}","\u{1F3A7}","\u{1F4D6}","\u{270F}\u{FE0F}"],
+        misi:"Walk down memory lane: used to, would and strong intensifiers."},
+  e4b2:{warna:"#D14D72",lembut:"#FBE3EA",gelap:"#93304F",ikon:"\u{1F320}",
+        hentian:["\u{1F4DA}","\u{1F527}","\u{1F4DD}","\u{1F3A7}","\u{1F4D6}","\u{270F}\u{FE0F}"],
+        misi:"Dream big: say what you would do if... and what you wish."},
+  e4b3:{warna:"#6B4BB0",lembut:"#EBE5F8",gelap:"#4A337A",ikon:"\u{1F30D}",
+        hentian:["\u{1F4DA}","\u{1F527}","\u{1F4DD}","\u{1F3A7}","\u{1F4D6}","\u{270F}\u{FE0F}"],
+        misi:"Save the planet: zero, first and second conditionals, and unless."},
+  e4b4:{warna:"#1B6E9C",lembut:"#DCEEF8",gelap:"#124B6B",ikon:"\u{1F4F0}",
+        hentian:["\u{1F4DA}","\u{1F527}","\u{1F4DD}","\u{1F3A7}","\u{1F4D6}","\u{270F}\u{FE0F}"],
+        misi:"Report the news: say what people said, asked, suggested and refused."},
+  e4b5:{warna:"#0F7B5F",lembut:"#D8F2EA",gelap:"#0A5442",ikon:"\u{1F4F1}",
+        hentian:["\u{1F4DA}","\u{1F527}","\u{1F4DD}","\u{1F3A7}","\u{1F4D6}","\u{270F}\u{FE0F}"],
+        misi:"Link causes and effects: because of, therefore, although and despite."},
+  e4b6:{warna:"#B07A10",lembut:"#FBF0D6",gelap:"#7A540A",ikon:"\u{1F91D}",
+        hentian:["\u{1F4DA}","\u{1F527}","\u{1F4DD}","\u{1F3A7}","\u{1F4D6}","\u{270F}\u{FE0F}"],
+        misi:"Lend a helping hand: polite requests, offers and reflexive pronouns."},
+  e5b1:{warna:"#B3261E",lembut:"#FBE2E0",gelap:"#7D1A15",ikon:"\u{23EA}",
+        hentian:["\u{1F4DA}","\u{1F527}","\u{1F4DD}","\u{1F3A7}","\u{1F4D6}","\u{270F}\u{FE0F}"],
+        misi:"Rewind the day: third conditional and regrets about the past."},
+  e5b2:{warna:"#1F5FBF",lembut:"#DFE8FA",gelap:"#154285",ikon:"\u{1F4BC}",
+        hentian:["\u{1F4DA}","\u{1F527}","\u{1F4DD}","\u{1F3A7}","\u{1F4D6}","\u{270F}\u{FE0F}"],
+        misi:"Ace the interview: report questions and answers with correct backshift."},
+  e5b3:{warna:"#D14D72",lembut:"#FBE3EA",gelap:"#93304F",ikon:"\u{1F50D}",
+        hentian:["\u{1F4DA}","\u{1F527}","\u{1F4DD}","\u{1F3A7}","\u{1F4D6}","\u{270F}\u{FE0F}"],
+        misi:"Solve the case: deduce what must, might or can't have happened."},
+  e5b4:{warna:"#6B4BB0",lembut:"#EBE5F8",gelap:"#4A337A",ikon:"\u{1F6D2}",
+        hentian:["\u{1F4DA}","\u{1F527}","\u{1F4DD}","\u{1F3A7}","\u{1F4D6}","\u{270F}\u{FE0F}"],
+        misi:"Be a smart consumer: complaints, refunds and the passive with modals."},
+  e5b5:{warna:"#1B6E9C",lembut:"#DCEEF8",gelap:"#124B6B",ikon:"\u{1F3DD}\u{FE0F}",
+        hentian:["\u{1F4DA}","\u{1F527}","\u{1F4DD}","\u{1F3A7}","\u{1F4D6}","\u{270F}\u{FE0F}"],
+        misi:"Discover Malaysia: describe places with relative and participle clauses."},
+  e5b6:{warna:"#0F7B5F",lembut:"#D8F2EA",gelap:"#0A5442",ikon:"\u{1F4DD}",
+        hentian:["\u{1F4DA}","\u{1F527}","\u{1F4DD}","\u{1F3A7}","\u{1F4D6}","\u{270F}\u{FE0F}"],
+        misi:"Make your case: formal writing, linking words and for-and-against essays."}
 };
 var DUNIA_ASAS={warna:"#D14D72",lembut:"#FBE3EA",gelap:"#93304F",ikon:"\u{1F4AC}",hentian:[],misi:"Lepasi enam hentian untuk menguasai bab ini."};
 function duniaBab(id){ return DUNIA[id||BAB_ID]||DUNIA_ASAS; }
@@ -2021,14 +2093,29 @@ function pilihSuara(){
 }
 if(window.speechSynthesis){ pilihSuara(); try{ speechSynthesis.onvoiceschanged=pilihSuara; }catch(e){} }
 function bolehDengar(){ return !!(window.speechSynthesis&&window.SpeechSynthesisUtterance); }
-function sebut(teks,laju){
-  if(!bolehDengar()) return;
+/* sebut() memulakan bacaan dan memanggil sudahMula(true) jika suara benar-benar bermula, atau sudahMula(false)
+   jika tiada bunyi dalam 2 saat (peranti tanpa suara English, mod senyap, atau pelayar yang menyekat). Dalam kes
+   itu app memaparkan skrip supaya murid tidak terhenti. */
+function sebut(teks,laju,sudahMula){
+  if(!bolehDengar()){ if(sudahMula) sudahMula(false); return; }
   try{
     speechSynthesis.cancel();
-    var u=new SpeechSynthesisUtterance(String(teks).replace(/<[^>]*>/g," "));
+    var mula=false, u=new SpeechSynthesisUtterance(String(teks).replace(/<[^>]*>/g," "));
     u.lang=SUARA?SUARA.lang:"en-GB"; if(SUARA) u.voice=SUARA; u.rate=laju||0.95;
+    u.onstart=function(){ mula=true; if(sudahMula) sudahMula(true); };
+    u.onerror=function(){ if(!mula&&sudahMula){ mula=true; sudahMula(false); } };
     speechSynthesis.speak(u);
-  }catch(e){}
+    setTimeout(function(){ if(!mula&&sudahMula){ mula=true; sudahMula(false); } },2000);
+  }catch(e){ if(sudahMula) sudahMula(false); }
+}
+/* Susun: nilai mengikut TEKS, bukan indeks. Dua perkataan yang sama dalam satu ayat (cth. "I wish I could")
+   boleh ditukar tempat tanpa mengubah ayat, jadi murid yang mengetik "I" kedua dahulu tidak boleh dihukum. */
+function susunTeks(q,i){ return String(q.p[i]).replace(/\s+/g," ").trim(); }
+function susunSama(q,pos,i){ return susunTeks(q,q.b[pos])===susunTeks(q,i); }
+function susunBetul(q,pil){
+  if(!pil||pil.length!==q.b.length) return false;
+  for(var k=0;k<q.b.length;k++) if(!susunSama(q,k,pil[k])) return false;
+  return true;
 }
 function adaJawapan(q){
   if(q.j==="pilih")return S.pilihan!==null&&S.pilihan>=0;
@@ -2057,7 +2144,7 @@ function semak(masaHabis){
     var b2=false;
     if(q.j==="pilih")b2=S.pilihan===q.b;
     else if(q.j==="banyak")b2=eqSet(S.pilihan,q.b);
-    else if(q.j==="susun")b2=eq(S.pilihan,q.b);
+    else if(q.j==="susun")b2=susunBetul(q,S.pilihan);
     else if(q.j==="nombor")b2=Math.abs(nomJawapan(S.pilihan)-q.b)<=(q.tol||0.05);
     else if(q.j==="isi")b2=isiBetul(q,S.pilihan);
     S.retryOk=b2; S.disemak=true; bunyi(b2?"betul":"salah"); render();
@@ -2068,7 +2155,7 @@ function semak(masaHabis){
   if(!masaHabis){
     if(q.j==="pilih")betul=S.pilihan===q.b;
     else if(q.j==="banyak")betul=eqSet(S.pilihan,q.b);
-    else if(q.j==="susun")betul=eq(S.pilihan,q.b);
+    else if(q.j==="susun")betul=susunBetul(q,S.pilihan);
     else if(q.j==="nombor")betul=Math.abs(nomJawapan(S.pilihan)-q.b)<=(q.tol||0.05);
     else if(q.j==="isi")betul=isiBetul(q,S.pilihan);
   }
@@ -2991,11 +3078,14 @@ function renderSoalan(){
     if(bolehDengar()){
       var b1=el("button","btn dengar-btn");b1.type="button";b1.setAttribute("data-f","dengar");
       b1.innerHTML='<span aria-hidden="true">\u{1F50A}</span> Dengar';
-      b1.onclick=function(){ sebut(q.dengar,0.95); };
+      var skripBaca=el("p","qnote dengar-skrip","");
+      skripBaca.style.display="none";
+      var tunjukSkrip=function(ok){ if(ok===false){ skripBaca.innerHTML="<b>Tiada bunyi pada peranti ini.</b> Baca skrip: "+esc(q.dengar); skripBaca.style.display=""; } };
+      b1.onclick=function(){ sebut(q.dengar,0.95,tunjukSkrip); };
       var b2=el("button","btn ghost sm");b2.type="button";
       b2.innerHTML='<span aria-hidden="true">\u{1F422}</span> Perlahan';
-      b2.onclick=function(){ sebut(q.dengar,0.7); };
-      dg.appendChild(b1); dg.appendChild(b2);
+      b2.onclick=function(){ sebut(q.dengar,0.7,tunjukSkrip); };
+      dg.appendChild(b1); dg.appendChild(b2); dg.appendChild(skripBaca);
       if(S.disemak) dg.appendChild(el("p","qnote dengar-skrip","<b>Skrip:</b> "+esc(q.dengar)));
     } else {
       dg.appendChild(el("p","qnote","Peranti ini tiada suara. Baca skrip ini:"));
@@ -3059,7 +3149,7 @@ function renderSoalan(){
       var o=el("button","opt");o.type="button";o.setAttribute("data-f","opt-"+i);
       o.innerHTML=(pos>=0?'<span class="ord">'+(pos+1)+'</span>':'<span class="key">&middot;</span>')+'<span>'+txt+'</span>';
       if(pos>=0)o.setAttribute("data-pick","1");
-      if(S.disemak){o.disabled=true;if(pos>=0)o.setAttribute("data-mark",q.b[pos]===i?"ok":"no");}
+      if(S.disemak){o.disabled=true;if(pos>=0)o.setAttribute("data-mark",susunSama(q,pos,i)?"ok":"no");}
       else o.onclick=function(){
         var k=S.pilihan.indexOf(i);if(k>=0)S.pilihan.splice(k,1);else S.pilihan.push(i);
         render();
@@ -3087,7 +3177,7 @@ function renderSoalan(){
     var rowI=el("div","numrow isirow");
     var inI=el("input");inI.type="text";inI.id="isiJwp";inI.placeholder="Taip jawapan";
     ["autocomplete","autocorrect","autocapitalize","spellcheck"].forEach(function(k){ inI.setAttribute(k,k==="spellcheck"?"false":"off"); });
-    inI.setAttribute("data-f","isi"); inI.setAttribute("aria-label","Jawapan awak");
+    inI.setAttribute("data-f","isi"); inI.setAttribute("aria-label","Jawapan awak"); inI.setAttribute("enterkeyhint","done");
     inI.value=(S.pilihan===null)?"":S.pilihan;
     inI.disabled=S.disemak;
     inI.oninput=function(){S.pilihan=inI.value;var b=$("btnSemak");if(b)b.disabled=inI.value.trim()==="";};

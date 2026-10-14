@@ -24,14 +24,14 @@ const ARAS = [
  kadNama:"was/were + -ing", kadEm:"\u{1F300}", kadFakta:"Past continuous = was/were + verb-ing. It shows an action that was IN PROGRESS at a time in the past: At 8 p.m., I was doing my homework.",
  bosKadNama:"adjective or adverb?", bosKadEm:"\u{1F50E}", bosKadFakta:"An adjective describes a noun: a careful driver. An adverb describes a verb: drive carefully. Many adverbs end in -ly. Good → well is irregular.",
  soalan:[
- {j:"pilih",t:"At 8 p.m. yesterday, I ____ my homework.",p:["was doing","did","am doing","were doing"],b:0,u:"At 8 p.m. yesterday shows an action in progress at a past time. With I, use was + verb-ing: was doing."},
+ {j:"pilih",t:"At 8 p.m. yesterday, I ____ my homework when my friend phoned.",p:["was doing","did","am doing","were doing"],b:0,u:"At 8 p.m. yesterday shows an action in progress at a past time. With I, use was + verb-ing: was doing."},
  {j:"pilih",t:"They ____ lunch when the storm began.",p:["were eating","was eating","are eating","eat"],b:0,u:"They is plural, so we use were + verb-ing: were eating."},
  {j:"pilih",t:"It ____ snowing when we arrived at the cabin.",p:["wasn't","weren't","didn't","isn't"],b:0,u:"It is singular, so the negative past continuous is wasn't + verb-ing: It wasn't snowing."},
  {j:"pilih",t:"____ you walking to school at 7 a.m.?",p:["Were","Was","Did","Are"],b:0,u:"Past continuous questions: Were you + verb-ing? Were you walking...?"},
  {j:"pilih",t:"It's cold. Dress ____.",p:["warmly","warm","warmer","warmness"],b:0,u:"Dress is a verb, so we need an adverb: warmly."},
  {j:"pilih",t:"She speaks English very ____.",p:["well","good","goodly","best"],b:0,u:"Speaks is a verb, so we need an adverb. The adverb of good is well."},
  {j:"isi",t:"Type the correct word: It's foggy. Drive ____. (careful)",b:["carefully"],u:"Drive is a verb, so we need an adverb: carefully."},
- {j:"isi",t:"Type the correct form of the verb: Yesterday at noon, my brother ____ (play) football in the rain.",b:["was playing"],u:"Past continuous with my brother (he): was + playing."}],
+ {j:"isi",t:"Type the correct form of the verb: Yesterday at noon, my brother ____ (play) football when it started to rain.",b:["was playing"],u:"Past continuous with my brother (he): was + playing."}],
  bos:{j:"pilih",t:"Choose the sentence that is correct.",p:["Hana was running quickly because the rain was getting heavy.","Hana was running quick because the rain was getting heavy.","Hana were running quickly because the rain was getting heavy.","Hana was ran quickly because the rain was getting heavy."],b:0,u:"Past continuous: was + running (with Hana). Running is a verb, so we use the adverb quickly."}},
 
 {n:3, tempat:"Forecast Desk", sk:"Reading 3.1.2 · specific details in a weather forecast", lampiran:"ramalan",
@@ -73,7 +73,7 @@ const ARAS = [
  {j:"pilih",t:"Why was SMK Bukit Indah a safe place? (Text 1)",p:["It is on high ground.","It is near the river.","It has a swimming pool.","It has a big field."],b:0,u:"The text says the school is on high ground, so the water did not reach it."},
  {j:"banyak",t:"Based on Text 1, choose TWO things the students were doing to help.",p:["giving out food","carrying children","fixing roads","driving boats"],b:[0,1],u:"The text says students gave out food and carried small children to safety."},
  {j:"pilih",t:"What can we infer about the teachers in Text 1?",p:["They were brave and kind.","They were afraid of the water.","They were angry with the families.","They were careless about safety."],b:0,u:"They stayed at the school and helped everyone through the night, so they were brave and helpful."},
- {j:"susun",t:"Put the events in the correct order.",p:["The water started to rise.","Villagers walked to the school.","Students gave out food.","The water went down in the morning."],b:[0,1,2,3],u:"First the water rose, then villagers went to the school, students helped, and finally the water went down."}],
+ {j:"susun",t:"Put the events in the correct order. (Text 1)",p:["The water started to rise.","Villagers walked to the school.","Students gave out food.","The water went down in the morning."],b:[0,1,2,3],u:"First the water rose, then villagers went to the school, students helped, and finally the water went down."}],
  bos:{j:"pilih",t:"Which of these is the BEST headline for Text 1?",p:["School Becomes Safe Home During Flood","Heavy Rain Cancels School Trip","New Bridge Opens in Bukit Indah","Students Win Science Prize"],b:0,u:"The whole report is about the school helping people during the flood."}},
 
 {n:6, tempat:"Report Desk", sk:"Writing 4.1.3 · Grammar · describe past events using the past continuous", lampiran:null,

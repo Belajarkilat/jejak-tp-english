@@ -27,7 +27,7 @@ const ARAS = [
  soalan:[
  {j:"pilih",t:"You ____ wear a seat belt in the car. It is the law.",p:["must","might","could","may not"],b:0,u:"It is the law, so it is necessary: must."},
  {j:"pilih",t:"You ____ run in the corridor. It is dangerous.",p:["mustn't","must","should","might"],b:0,u:"Running is not allowed: mustn't."},
- {j:"pilih",t:"I have a headache. What ____ I do?",p:["should","must","mustn't","might"],b:0,u:"We use should to ask for advice: What should I do?"},
+ {j:"pilih",t:"I have a headache. What ____ I do?",p:["should","mustn't","did","are"],b:0,u:"We use should to ask for advice: What should I do?"},
  {j:"pilih",t:"You ____ see a doctor if you feel ill.",p:["should","shouldn't","mustn't","can't"],b:0,u:"Seeing a doctor is a good idea, so we use should."},
  {j:"pilih",t:"It ____ rain this afternoon, so take an umbrella.",p:["might","mustn't","should not","is must"],b:0,u:"Might shows a possibility."},
  {j:"pilih",t:"Which is the polite INDIRECT question?",p:["Do you know where the canteen is?","Do you know where is the canteen?","Where is the canteen?","Do you know where does the canteen?"],b:0,u:"In an indirect question, use statement word order: where the canteen is."},
@@ -61,7 +61,7 @@ const ARAS = [
  {j:"pilih",t:"Listen. What advice does the doctor give?",dengar:"You should rest and drink a lot of water. You shouldn't go to school tomorrow because you might spread the flu to your friends.",p:["Rest and drink water","Go to school as usual","Play football outside","Eat lots of spicy food"],b:0,u:"The doctor says: You should rest and drink a lot of water."},
  {j:"pilih",t:"Listen. Why shouldn't the pupil go to school?",dengar:"You should rest and drink a lot of water. You shouldn't go to school tomorrow because you might spread the flu to your friends.",p:["He might spread the flu.","The school is closed tomorrow.","Tomorrow is a public holiday.","He has no clean uniform."],b:0,u:"The doctor says: you might spread the flu to your friends."},
  {j:"isi",t:"Listen and type the missing word: We ____ meeting at the gate at three.",dengar:"We are meeting at the gate at three.",b:["are","'re"],u:"The speaker says are. Present continuous for an arrangement: are + meeting."}],
- bos:{j:"pilih",t:"Listen to the voice message. What does Zara ask Dani to do?",dengar:"Hi Dani, it's Zara. I'm going to the library tomorrow to finish my project. Can you tell me what time you finish football practice? If you finish before five, you could meet me there.",p:["Tell her when he is free","Bring her a big book","Buy her lunch at school","Call her class teacher"],b:0,u:"Zara says: Can you tell me what time you finish football practice?"}},
+ bos:{j:"pilih",t:"Listen to the voice message. What does Zara ask Dani to do?",dengar:"Hi Dani, it's Zara. I'm going to the library tomorrow to finish my project. Can you tell me what time you finish football practice? If you finish before five, you could meet me there.",p:["Tell her when he finishes","Bring her a big book","Buy her lunch at school","Call her class teacher"],b:0,u:"Zara says: Can you tell me what time you finish football practice?"}},
 
 {n:5, tempat:"Letter Box", sk:"Reading 3.1.1, 3.1.3 · main idea, inference, vocabulary in context", lampiran:"nasihat",
  kadNama:"advice column", kadEm:"\u{1F4EC}", kadFakta:"An advice column is a part of a magazine where readers write about problems and an expert gives advice.",
@@ -74,14 +74,14 @@ const ARAS = [
  {j:"pilih",t:"What shouldn't Nina do before bed? (Text 1)",p:["Use her phone","Read a book","Drink water","Brush her teeth"],b:0,u:"The expert says: You shouldn't use your phone before bed."},
  {j:"banyak",t:"Based on Text 1, choose TWO pieces of advice from the expert.",p:["Do light exercise in the evening.","Switch off the phone at nine.","Eat a big dinner late at night.","Study until midnight every day."],b:[0,1],u:"The expert says to do some light exercise and to switch off the phone at nine."},
  {j:"pilih",t:"What might happen if Nina follows the advice? (Text 1)",p:["She might feel better.","She will win a prize.","She will have no homework.","She will move to another school."],b:0,u:"The expert says: If you follow this advice, you might feel better in a week."},
- {j:"pilih",t:"What can we infer about the expert?",p:["She cares about Nina.","She dislikes the reader a lot.","She is very angry with her.","She doesn't know anything at all."],b:0,u:"She gives kind and clear advice, so she cares about the reader."}],
+ {j:"pilih",t:"What can we infer about the expert? (Text 1)",p:["She cares about Nina.","She dislikes the reader a lot.","She is very angry with her.","She doesn't know anything at all."],b:0,u:"She gives kind and clear advice, so she cares about the reader."}],
  bos:{j:"pilih",t:"Which of these is the BEST title for Text 1?",p:["Why Am I Always Tired?","My Holiday in Penang","A New School Bag","The Best Football Team"],b:0,u:"The whole text is about Nina being tired and the advice she gets."}},
 
 {n:6, tempat:"Editor's Desk", sk:"Writing 4.1.2 · Grammar · give advice and talk about plans", lampiran:null,
  kadNama:"polite messages", kadEm:"\u{1F4E8}", kadFakta:"Start a message with a greeting (Dear Aunty Lina,), say what you want, and finish with thanks (Thank you!). Be polite: Could you tell me...?",
  bosKadNama:"check before sending", bosKadEm:"\u{2705}", bosKadFakta:"Check three things before you send: spelling, capital letters and full stops, and the verb after must / should / might (base verb!).",
  soalan:[
- {j:"isi",t:"Type the missing word: You ____ to bed early tonight. (advice: should)",b:["should"],u:"We use should for advice: You should go to bed early."},
+ {j:"isi",t:"Type the missing word: You ____ go to bed early tonight. It is good advice.",b:["should"],u:"We use should for advice: You should go to bed early."},
  {j:"isi",t:"There is ONE wrong word. Type the correct word: You must to wear a helmet.",b:["wear"],u:"After must, use the base verb without to: You must wear a helmet."},
  {j:"susun",t:"Put the words in order to make a correct sentence.",p:["You","shouldn't","eat","too","much","sugar."],b:[0,1,2,3,4,5],u:"Subject + shouldn't + base verb + object: You shouldn't eat too much sugar."},
  {j:"pilih",t:"Which sentence is a polite request?",p:["Could you tell me when the bus leaves?","You tell me what time bus leaves now.","Tell me what time does the bus leave.","What time you leave the bus now?"],b:0,u:"Could you tell me ... + statement word order is polite."},

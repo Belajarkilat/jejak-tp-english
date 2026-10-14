@@ -58,7 +58,7 @@ window.BANK["e1b7"] =
     {
      "j": "pilih",
      "gbr": "📦➡️🏠",
-     "t": "The box is going ____ the house.",
+     "t": "The box is going from the street to the inside of the house. It is going ____ the house.",
      "p": [
       "into",
       "out of",

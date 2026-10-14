@@ -186,7 +186,7 @@ window.BANK["e1b3"] =
    "soalan": [
     {
      "j": "pilih",
-     "t": "At 8 p.m. yesterday, I ____ my homework.",
+     "t": "At 8 p.m. yesterday, I ____ my homework when my friend phoned.",
      "p": [
       "did",
       "am doing",
@@ -266,7 +266,7 @@ window.BANK["e1b3"] =
     },
     {
      "j": "isi",
-     "t": "Type the correct form of the verb: Yesterday at noon, my brother ____ (play) football in the rain.",
+     "t": "Type the correct form of the verb: Yesterday at noon, my brother ____ (play) football when it started to rain.",
      "b": [
       "was playing"
      ],
@@ -639,7 +639,7 @@ window.BANK["e1b3"] =
     },
     {
      "j": "susun",
-     "t": "Put the events in the correct order.",
+     "t": "Put the events in the correct order. (Text 1)",
      "p": [
       "The water started to rise.",
       "Villagers walked to the school.",

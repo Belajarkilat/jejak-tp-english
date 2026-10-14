@@ -34,7 +34,7 @@ const ARAS = [
  {j:"pilih",t:"We ____ to the radio at the moment.",p:["are listening","listen","listens","is listening"],b:0,u:"At the moment means now, so we use am/is/are + verb-ing. With we, use are: We are listening."},
  {j:"isi",t:"Type the correct form of the verb: Ravi usually ____ (watch) films at the weekend.",b:["watches"],u:"Usually shows a habit, so use the present simple. Verbs ending in -ch take -es with he or she: Ravi watches."},
  {j:"pilih",t:"Which time word usually goes with the present continuous?",p:["at the moment","every day","usually","once a week"],b:0,u:"At the moment talks about now. Every day, usually and once a week talk about habits, so they go with the present simple."},
- {j:"isi",t:"Make the sentence negative. Type the missing words: Mei Ling is cooking dinner. → Mei Ling ____ cooking dinner.",b:["isn't","is not"],u:"The negative of is + verb-ing is isn't (is not) + verb-ing: Mei Ling isn't cooking dinner."}],
+ {j:"isi",t:"Make the sentence negative. Type the missing words: Mei Ling is cooking dinner. → Mei Ling ____ cooking dinner.",b:["isn't","is not","'s not"],u:"The negative of is + verb-ing is isn't (is not) + verb-ing: Mei Ling isn't cooking dinner."}],
  bos:{j:"pilih",t:"Choose the correct sentence.",p:["My sister often goes to the gym.","My sister often going to the gym.","My sister is often go to the gym.","My sister often go to the gym."],b:0,u:"Often shows a habit, so use the present simple. With my sister (she), the verb takes -es: goes."}},
 
 {n:3, tempat:"Club Fair", sk:"Reading 3.1.2 · understand specific details in a poster", lampiran:"klub",

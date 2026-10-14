@@ -18,7 +18,7 @@ const tanpaLaporanPenuh = process.argv.includes("--ringkas");
   const b = await chromium.launch();
   let jumlahGagal = 0;
   for (const bab of babDiuji) {
-    const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, serviceWorkers: "block" });
+    const ctx = await b.newContext({ viewport: { width: +(process.env.UJI_LEBAR||390), height: 844 }, isMobile: true, hasTouch: true, serviceWorkers: "block" });
     await require("./_buka").bukaSemua(ctx);
     await ctx.addInitScript(id => { try { localStorage.setItem("jm-bab", id); } catch (e) {} }, bab);
     const p = await ctx.newPage();
@@ -48,15 +48,23 @@ const tanpaLaporanPenuh = process.argv.includes("--ringkas");
       const bersihHtml = e => { const c = e.cloneNode(true); c.querySelectorAll(".sr-sahaja").forEach(x => x.remove()); c.querySelectorAll("[data-sr]").forEach(x => { x.removeAttribute("data-sr"); x.removeAttribute("aria-hidden"); }); return c.innerHTML; };
       const tq = teks(await soalan.evaluate(bersihHtml));
       if (process.env.UJI_LOG) console.log(`   l${langkah} ${tq.slice(0, 70)}`);
+      /* UI/UX: tiada limpahan melintang, dan setiap soalan yang menyebut Figure/Text mesti memaparkan rajahnya. */
+      const lumur = await p.evaluate(() => ({ lebih: document.documentElement.scrollWidth - window.innerWidth,
+        rajah: !!document.querySelector(".figure"), gbr: !!document.querySelector(".gbr"), dengar: !!document.querySelector(".dengar") }));
+      if (lumur.lebih > 1) gagal.push(`limpahan melintang ${lumur.lebih}px: ${tq.slice(0, 60)}`);
       const cari = await p.evaluate(({ id, tq }) => {
         const strip = h => String(h).replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
         const bank = window.BANK[id]; if (!bank) return null;
         for (const a of bank.aras) for (const q of a.soalan.concat([a.bos])) {
-          if (strip(q.t) === tq) return { j: q.j, p: q.p ? q.p.map(x => String(x).replace(/\s+/g, " ").trim()) : null, b: q.b, tol: q.tol, bos: q === a.bos };
+          if (strip(q.t) === tq) return { j: q.j, p: q.p ? q.p.map(x => String(x).replace(/\s+/g, " ").trim()) : null, b: q.b, tol: q.tol, bos: q === a.bos, gbr: !!q.gbr, dengar: !!q.dengar };
         }
         return null;
       }, { id: bab, tq });
       if (!cari) { gagal.push(`soalan tidak dijumpai dalam BANK: ${tq.slice(0, 70)}`); break; }
+      const perluRajah = /(Figure|Text) \d/.test(tq + " " + (cari.p || []).join(" "));
+      if (perluRajah && !lumur.rajah) gagal.push(`RAJAH TIDAK DIPAPAR: ${tq.slice(0, 70)}`);
+      if (cari.gbr && !lumur.gbr) gagal.push(`GAMBAR TIDAK DIPAPAR: ${tq.slice(0, 70)}`);
+      if (cari.dengar && !lumur.dengar) gagal.push(`BUTANG DENGAR TIADA: ${tq.slice(0, 70)}`);
       if (cari.bos) laporan.bos++;
       laporan[cari.j] = (laporan[cari.j] || 0) + 1;
       sudah.add(tq);
@@ -64,7 +72,17 @@ const tanpaLaporanPenuh = process.argv.includes("--ringkas");
       const keOpt = t => (optTeks.find(o => String(o.t).replace(/\s+/g, " ").trim() === t) || {}).f;
       if (cari.j === "pilih") await p.click(`[data-f="${keOpt(cari.p[cari.b])}"]`);
       else if (cari.j === "banyak") for (const i of cari.b) await p.click(`[data-f="${keOpt(cari.p[i])}"]`);
-      else if (cari.j === "susun") for (const i of cari.b) await p.click(`[data-f="${keOpt(cari.p[i])}"]`);
+      else if (cari.j === "susun") {
+        /* Perkataan sama berulang (cth. "I wish I could"): ketik yang BELUM dipilih, dan ambil yang TERAKHIR supaya
+           ujian turut membuktikan penilaian berdasarkan teks (bukan indeks). */
+        const guna = new Set();
+        for (const i of cari.b) {
+          const calon = optTeks.filter(o => String(o.t).replace(/\s+/g, " ").trim() === cari.p[i] && !guna.has(o.f));
+          const pilih = calon[calon.length - 1];
+          guna.add(pilih.f);
+          await p.click(`[data-f="${pilih.f}"]`);
+        }
+      }
       else if (cari.j === "nombor") await p.fill('[data-f="num"]', String(cari.b));
       else if (cari.j === "isi") await p.fill('[data-f="isi"]', String(cari.b[cari.b.length - 1]).toUpperCase() + "  ");
       else if (cari.j === "buka") await p.fill('[data-f="buka"]', "Soalan saya ialah bakteria berganda setiap jam. Penyelesaian ditulis langkah demi langkah dan hukum indeks dinamakan pada setiap langkah dengan jelas.");

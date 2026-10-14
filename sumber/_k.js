@@ -91,4 +91,24 @@ function ulasanBab(topik, tajukPendek){
   };
 }
 
-module.exports = { notis, poster, sembang, jadual, emel, teks, SPI_A2, ulasanBab };
+/* Table 5: Overall Performance Level for Target Level CEFR B1 (Independent User), DSKP KSSM Bahasa Inggeris
+   Tingkatan 3 (draf 1/2018) dan Tingkatan 4 (draf 1/2018), kata demi kata. Tingkatan 3 = B1 Low, Tingkatan 4 = B1 Mid.
+   Tingkatan 5 memakai perkataan Tingkatan 4 (DSKP Tingkatan 5 belum dijumpai; lihat SAMBUNG.md). */
+const SPI_B1_T3 = [
+  "Pupil hardly achieves the curriculum target even with a lot of support.",
+  "Pupil is on track to achieve the curriculum target.",
+  "Pupil achieves expectations of the curriculum target.",
+  "Pupil works towards exceeding expectations of the curriculum target.",
+  "Pupil is on track to exceed expectations of the curriculum target.",
+  "Pupil exceeds expectations of the curriculum target."
+];
+const SPI_B1_T4 = [
+  "Pupil displays minimal ability to achieve the curriculum target.",
+  "Pupil is on track to achieve the curriculum target.",
+  "Pupil achieves expectations of the curriculum target.",
+  "Pupil works towards exceeding expectations of the curriculum target.",
+  "Pupil is on track to exceed expectations of the curriculum target.",
+  "Pupil exceeds expectations of the curriculum target."
+];
+
+module.exports = { notis, poster, sembang, jadual, emel, teks, SPI_A2, SPI_B1_T3, SPI_B1_T4, ulasanBab };

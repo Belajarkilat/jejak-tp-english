@@ -58,6 +58,12 @@ function semak(bab){
     const figHtml = typeof spekL === "string" && spekL.indexOf("<figure") >= 0;
     if((spekL && typeof spekL === "object") || figHtml){
       lihat(sebutRajah, `${di}: ada rajah tetapi tiada soalan yang merujuk "Figure/Text"`);
+      /* lampiranUntuk() hanya memaparkan rajah pada soalan yang menyebut Figure/Text. Soalan tanpa sebutan itu
+         akan kehilangan bahan rujukannya (kecacatan DLP Sains), jadi SETIAP soalan hentian mesti menyebutnya. */
+      if(figHtml) (a.soalan || []).concat(a.bos ? [a.bos] : []).forEach((q, k) => {
+        if(!/(Figure|Text) \d/.test(String(q.t) + " " + String(q.arahan || "") + " " + (q.p || []).join(" ")))
+          m.push(`${di} item ${k+1}: hentian berlampiran tetapi soalan tidak menyebut "Figure n"/"Text n", rajah akan disorok`);
+      });
     } else if(sebutRajah){
       /* Arah bertentangan sama bahaya: soalan berkata "Berdasarkan Rajah 1"
          tetapi hentian ini memaparkan jadual atau tiada apa-apa. Ini berlaku

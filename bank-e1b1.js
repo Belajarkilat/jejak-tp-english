@@ -271,7 +271,8 @@ window.BANK["e1b1"] =
      "t": "Make the sentence negative. Type the missing words: Mei Ling is cooking dinner. → Mei Ling ____ cooking dinner.",
      "b": [
       "isn't",
-      "is not"
+      "is not",
+      "'s not"
      ],
      "u": "The negative of is + verb-ing is isn't (is not) + verb-ing: Mei Ling isn't cooking dinner."
     }

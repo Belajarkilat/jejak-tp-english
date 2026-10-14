@@ -83,7 +83,7 @@ window.BANK["e1b2"] =
     },
     {
      "j": "pilih",
-     "gbr": "🍵",
+     "gbr": "🍳",
      "t": "If you want to learn how to make a new dish, you read a",
      "p": [
       "detective novel",
@@ -191,7 +191,7 @@ window.BANK["e1b2"] =
      "p": [
       "reads",
       "am reading",
-      "did read",
+      "readed",
       "read"
      ],
      "b": 3,
@@ -211,7 +211,7 @@ window.BANK["e1b2"] =
     },
     {
      "j": "pilih",
-     "t": "She ____ the film adaptation of the novel.",
+     "t": "She ____ the film adaptation of the novel last year.",
      "p": [
       "didn't saw",
       "didn't see",
@@ -528,7 +528,7 @@ window.BANK["e1b2"] =
    "bos": {
     "j": "pilih",
     "t": "Listen to the story. What was the writer's job before she became famous?",
-    "dengar": "Zahra is a famous writer now. But ten years ago, she wasn't a writer. She was a teacher in a small village school. She wrote stories at night after her lessons. One day, a company read her first book, and they loved it.",
+    "dengar": "Zahra is a famous writer now. But ten years ago, she wasn't a writer. She was a teacher in a small village school. She wrote stories at night after her lessons. One day, a publisher read her first book, and they loved it.",
     "p": [
      "A doctor",
      "A teacher",
@@ -605,11 +605,11 @@ window.BANK["e1b2"] =
      "p": [
       "He was lazy and bored.",
       "He was careless and rude.",
-      "He was patient and brave.",
+      "He was patient and hardworking.",
       "He was shy and afraid."
      ],
      "b": 2,
-     "u": "He kept trying even after many failures, so he was patient and determined."
+     "u": "He kept trying even after many failures, so he was patient and hardworking."
     },
     {
      "j": "banyak",
@@ -628,7 +628,7 @@ window.BANK["e1b2"] =
     },
     {
      "j": "pilih",
-     "t": "What did Yusri invent in the end?",
+     "t": "What did Yusri invent in the end? (Text 1)",
      "p": [
       "A solar-powered car",
       "A new telephone",
@@ -691,15 +691,11 @@ window.BANK["e1b2"] =
     },
     {
      "j": "isi",
-     "t": "Type the correct word: She didn't ____ the book.",
+     "t": "Type the verb in the correct form: She didn't ____ (finish) the book.",
      "b": [
-      "finish",
-      "like",
-      "read",
-      "enjoy",
-      "buy"
+      "finish"
      ],
-     "u": "After didn't, use the base verb: She didn't finish the book."
+     "u": "After didn't, use the base verb without -ed: She didn't finish the book."
     },
     {
      "j": "susun",
@@ -734,13 +730,13 @@ window.BANK["e1b2"] =
      "j": "pilih",
      "t": "Choose the best word to complete the sentence: Dina woke up early. ____, she had breakfast.",
      "p": [
-      "Finally",
       "Yesterday",
+      "Because",
       "Then",
-      "Because"
+      "Although"
      ],
      "b": 2,
-     "u": "Then shows the next event. Finally is for the last event."
+     "u": "Then shows the next event. Yesterday, because and although do not fit here."
     },
     {
      "j": "isi",

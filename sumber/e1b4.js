@@ -15,8 +15,8 @@ const ARAS = [
  {j:"pilih",gbr:"\u{1F992}",t:"Which animal has a very long neck?",p:["giraffe","rhinoceros","crocodile","elephant"],b:0,u:"A giraffe has the longest neck of all animals."},
  {j:"pilih",gbr:"\u{1F3DC}\u{FE0F}",t:"A very dry place with a lot of sand is a",p:["desert","valley","island","reef"],b:0,u:"A desert is very dry and often has a lot of sand."},
  {j:"pilih",gbr:"\u{1F3DD}\u{FE0F}",t:"A piece of land with water all around it is an",p:["island","mountain","waterfall","rainforest"],b:0,u:"An island is surrounded by water."},
- {j:"pilih",gbr:"\u{1F30B}",t:"Which word describes a very high, steep rock beside the sea?",p:["cliff","lake","forest","waterfall"],b:0,u:"A cliff is a high, steep rock face, often next to the sea."},
- {j:"pilih",t:"Which of these is a large animal that lives in the sea?",p:["whale","butterfly","crocodile","gorilla"],b:0,u:"A whale is a very big mammal that lives in the ocean."},
+ {j:"pilih",t:"Which word describes a very high, steep rock beside the sea?",p:["cliff","lake","forest","waterfall"],b:0,u:"A cliff is a high, steep rock face, often next to the sea."},
+ {j:"pilih",t:"Which of these is a large animal that lives in the sea?",p:["whale","butterfly","tiger","gorilla"],b:0,u:"A whale is a very big mammal that lives in the ocean."},
  {j:"isi",gbr:"\u{1F989}",t:"Type the missing word: An ____ is a bird that hunts at night and has big eyes.",b:["owl"],u:"An owl hunts at night and has big eyes. Remember to use an before a vowel sound."},
  {j:"pilih",t:"Which group has ONLY animals?",p:["turtle, whale, tiger","beach, cliff, lake","bee, island, snake","owl, valley, giraffe"],b:0,u:"A turtle, a whale and a tiger are animals. Beach, cliff, lake and valley are places."}],
  bos:{j:"banyak",t:"Choose ALL the words that are landscapes (places in nature).",p:["canyon","valley","waterfall","penguin","butterfly"],b:[0,1,2],u:"A canyon, a valley and a waterfall are landscapes. A penguin and a butterfly are animals."}},
@@ -32,7 +32,7 @@ const ARAS = [
  {j:"pilih",t:"There ____ any animals on the island.",p:["aren't","isn't","don't","hasn't"],b:0,u:"Animals is plural, so we say There aren't any animals."},
  {j:"pilih",t:"Is there ____ water in the bottle?",p:["any","a","an","many"],b:0,u:"Water is uncountable, and in questions we use any."},
  {j:"isi",t:"Type the correct form of the adjective: A whale is ____ than a dolphin. (big)",b:["bigger"],u:"Big is a short adjective. Double the last letter and add -er: bigger."},
- {j:"isi",t:"Type the missing word: He climbed ____ mountain last year.",b:["a"],u:"Mountain is a singular countable noun and starts with a consonant sound, so we use a."}],
+ {j:"isi",t:"Type a or an: In the forest, we saw ____ elephant with its baby.",b:["an"],u:"Elephant is a singular countable noun that starts with a vowel sound, so we use an."}],
  bos:{j:"pilih",t:"Choose the correct sentence.",p:["The Nile is the longest river in Africa.","The Nile is longer river in Africa.","The Nile is the most long river in Africa.","The Nile is longest river in Africa."],b:0,u:"Use the + superlative: the longest river."}},
 
 {n:3, tempat:"Wildlife Park", sk:"Reading 3.1.2 · specific details in a chat", lampiran:"sembang",
@@ -40,7 +40,7 @@ const ARAS = [
  bosKadNama:"endangered", bosKadEm:"\u{1F43C}", bosKadFakta:"An endangered animal is in danger of disappearing forever. We should protect endangered animals and their homes.",
  soalan:[
  {j:"pilih",t:"Look at Figure 1. Where is the school trip going?",p:["To a wildlife park","To a museum","To a beach","To a shopping mall"],b:0,u:"Siti writes: We're going to the wildlife park on Saturday."},
- {j:"pilih",t:"According to Figure 1, how many species of owls can they see?",p:["Three","Two","Five","Ten owls"],b:0,u:"Aiman writes: There are three species of owls!"},
+ {j:"pilih",t:"According to Figure 1, how many species of owls can they see?",p:["Three","Two","Five","Ten"],b:0,u:"Aiman writes: There are three species of owls!"},
  {j:"pilih",t:"Based on Figure 1, what time must they meet at the school gate?",p:["7.30 a.m.","8.30 a.m.","6.30 a.m.","9.30 a.m."],b:0,u:"Siti writes: Meet at the school gate at 7.30 a.m."},
  {j:"pilih",t:"What does Ravi want to see most? (Figure 1)",p:["The tigers","The owls","The penguins","The snakes"],b:0,u:"Ravi writes: I can't wait to see the tigers!"},
  {j:"pilih",t:"What must they NOT forget to bring? (Figure 1)",p:["Water","Money for food","A camera","A laptop"],b:0,u:"Siti writes: Don't forget to bring water. There isn't any drinking water in the park."},

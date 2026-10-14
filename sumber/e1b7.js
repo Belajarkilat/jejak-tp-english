@@ -11,7 +11,7 @@ const ARAS = [
  kadNama:"who / which / that", kadEm:"\u{1F517}", kadFakta:"who = for people (the girl who sings). which = for things (the book which I read). that = for people or things (the book that I read).",
  bosKadNama:"prepositions", bosKadEm:"\u{1F4CD}", bosKadFakta:"in front of, behind, next to, opposite, near, into, out of, towards, past, over, against. They tell us WHERE something is or goes.",
  soalan:[
- {j:"pilih",gbr:"\u{1F4E6}\u{27A1}\u{FE0F}\u{1F3E0}",t:"The box is going ____ the house.",p:["into","out of","behind","against"],b:0,u:"Into shows movement from outside to inside."},
+ {j:"pilih",gbr:"\u{1F4E6}\u{27A1}\u{FE0F}\u{1F3E0}",t:"The box is going from the street to the inside of the house. It is going ____ the house.",p:["into","out of","behind","against"],b:0,u:"Into shows movement from outside to inside."},
  {j:"pilih",gbr:"\u{1F3EB}\u{1F68C}",t:"The bus is stopping ____ the school gate.",p:["in front of","into","over","towards"],b:0,u:"In front of means at the front of something."},
  {j:"pilih",gbr:"\u{1F309}",t:"The cars drive ____ the bridge to cross the river.",p:["over","behind","against","opposite"],b:0,u:"Over shows movement above and across something."},
  {j:"pilih",t:"The bank is ____ the post office. They are on opposite sides of the road.",p:["opposite","into","over","against"],b:0,u:"Opposite means facing something on the other side."},

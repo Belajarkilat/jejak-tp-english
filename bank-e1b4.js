@@ -109,7 +109,6 @@ window.BANK["e1b4"] =
     },
     {
      "j": "pilih",
-     "gbr": "🌋",
      "t": "Which word describes a very high, steep rock beside the sea?",
      "p": [
       "cliff",
@@ -126,7 +125,7 @@ window.BANK["e1b4"] =
      "p": [
       "butterfly",
       "whale",
-      "crocodile",
+      "tiger",
       "gorilla"
      ],
      "b": 1,
@@ -266,11 +265,11 @@ window.BANK["e1b4"] =
     },
     {
      "j": "isi",
-     "t": "Type the missing word: He climbed ____ mountain last year.",
+     "t": "Type a or an: In the forest, we saw ____ elephant with its baby.",
      "b": [
-      "a"
+      "an"
      ],
-     "u": "Mountain is a singular countable noun and starts with a consonant sound, so we use a."
+     "u": "Elephant is a singular countable noun that starts with a vowel sound, so we use an."
     }
    ],
    "bos": {
@@ -316,7 +315,7 @@ window.BANK["e1b4"] =
      "p": [
       "Two",
       "Five",
-      "Ten owls",
+      "Ten",
       "Three"
      ],
      "b": 3,

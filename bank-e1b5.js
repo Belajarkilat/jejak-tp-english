@@ -110,7 +110,7 @@ window.BANK["e1b5"] =
     {
      "j": "pilih",
      "gbr": "💥",
-     "t": "A sudden loud burst, for example when something bursts with a big bang, is an",
+     "t": "A sudden, very loud burst of energy that can break things is an",
      "p": [
       "explosion",
       "experiment",
@@ -150,7 +150,7 @@ window.BANK["e1b5"] =
       "solid",
       "gas",
       "liquid",
-      "test tube"
+      "metal"
      ],
      "b": 2,
      "u": "Water is normally a liquid. Ice is a solid and steam is a gas."
@@ -239,7 +239,7 @@ window.BANK["e1b5"] =
      "p": [
       "didn't be",
       "doesn't be",
-      "isn't",
+      "wasn't",
       "won't be"
      ],
      "b": 3,
@@ -261,7 +261,8 @@ window.BANK["e1b5"] =
      "j": "isi",
      "t": "Type the missing words: If we aren't careful with the chemicals, there ____ more explosions in class. (will be)",
      "b": [
-      "will be"
+      "will be",
+      "'ll be"
      ],
      "u": "First conditional: If + present simple, will + base verb: there will be."
     },
@@ -653,7 +654,7 @@ window.BANK["e1b5"] =
    ],
    "bos": {
     "j": "pilih",
-    "t": "Which of these is the BEST subject for the email?",
+    "t": "Which of these is the BEST subject for the email? (Text 1)",
     "p": [
      "Please return my book to the library",
      "Robot Workshop invitation",
@@ -678,9 +679,10 @@ window.BANK["e1b5"] =
    "soalan": [
     {
      "j": "isi",
-     "t": "Type the missing words: If it rains tomorrow, we ____ stay at home. (will)",
+     "t": "Type the missing word: If it rains tomorrow, we ____ stay at home. (future)",
      "b": [
-      "will"
+      "will",
+      "'ll"
      ],
      "u": "First conditional: If + present simple, will + base verb."
     },

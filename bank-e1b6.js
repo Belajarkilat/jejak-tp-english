@@ -208,10 +208,10 @@ window.BANK["e1b6"] =
      "j": "pilih",
      "t": "I have a headache. What ____ I do?",
      "p": [
-      "must",
-      "should",
       "mustn't",
-      "might"
+      "should",
+      "did",
+      "are"
      ],
      "b": 1,
      "u": "We use should to ask for advice: What should I do?"
@@ -544,7 +544,7 @@ window.BANK["e1b6"] =
     "dengar": "Hi Dani, it's Zara. I'm going to the library tomorrow to finish my project. Can you tell me what time you finish football practice? If you finish before five, you could meet me there.",
     "p": [
      "Bring her a big book",
-     "Tell her when he is free",
+     "Tell her when he finishes",
      "Buy her lunch at school",
      "Call her class teacher"
     ],
@@ -653,7 +653,7 @@ window.BANK["e1b6"] =
     },
     {
      "j": "pilih",
-     "t": "What can we infer about the expert?",
+     "t": "What can we infer about the expert? (Text 1)",
      "p": [
       "She cares about Nina.",
       "She dislikes the reader a lot.",
@@ -691,7 +691,7 @@ window.BANK["e1b6"] =
    "soalan": [
     {
      "j": "isi",
-     "t": "Type the missing word: You ____ to bed early tonight. (advice: should)",
+     "t": "Type the missing word: You ____ go to bed early tonight. It is good advice.",
      "b": [
       "should"
      ],
