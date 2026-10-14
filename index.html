@@ -3775,6 +3775,7 @@ function lukisTalian(){
    telefon murid tidak perlu memuat turunnya.
    ============================================================ */
 var SB=null, SB_JANJI=null, SESI=null, PROFIL=null;
+var DEMO_KEL=false;
 var AUTH_SIAP=false, AUTH_GAGAL=false, AUTH_MULA=false, GURU_DIMUAT=false, GOOGLE_ADA=false;
 var RALAT_GURU="", RALAT_AUTH="";
 var SB_SKRIP="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js";
@@ -3803,6 +3804,7 @@ function muatSupabase(){
 }
 
 function mulaAuth(){
+  if(DEMO_KEL){ AUTH_SIAP=true; return; }
   if(AUTH_MULA) return;
   AUTH_MULA=true; AUTH_GAGAL=false;
   if(!AWAN){ AUTH_SIAP=true; return; }
@@ -3845,6 +3847,7 @@ function bersihUrlAuth(){
 }
 
 function tetapSesi(sesi){
+  if(DEMO_KEL) return;   /* paparan contoh keluarga tidak boleh ditimpa oleh log masuk sebenar */
   var lama=SESI&&SESI.user&&SESI.user.id, baru=sesi&&sesi.user&&sesi.user.id;
   SESI=sesi||null;
   if(lama===baru&&AUTH_SIAP) return;
@@ -4037,16 +4040,39 @@ function untukKeluarga(){
   var md=SESI&&SESI.user&&SESI.user.user_metadata;
   return !!(md&&md.keluarga);
 }
+/* Paparan contoh keluarga (?demo=keluarga): data rekaan dalam pelayar, tanpa pangkalan data. Untuk demo dan video. */
+function bukaDemoKeluarga(){
+  DEMO_KEL=true;
+  var kid="demo-kel", masa=Date.now();
+  PROFIL={ada:true,keluarga:true,nama:"Contoh",premiumRendah:true,premiumAtas:true,premiumRendahTamat:"2027-12-31"};
+  KELAS_GURU=[{id:kid,nama:"Keluarga Contoh",kod:"CONTOH"}]; GURU_DIMUAT=true;
+  var anak=[["1","Aisyah binti Contoh","4821"],["2","Hakim bin Contoh","7305"],["3","Nur Aina binti Contoh","1962"]];
+  NOMBOR[kid]=anak.map(function(a){ return {no:a[0]}; }); NAMA[kid]={}; PIN[kid]={};
+  anak.forEach(function(a){ NAMA[kid][a[0]]=a[1]; PIN[kid][a[0]]=a[2]; });
+  function bab(betul,jumlah,hentian,kali,jam){ return {aras:{},kali:kali,akhir:masa-jam*36e5,betul:betul,jumlah:jumlah,hentian:hentian}; }
+  KEL.data={
+    "1":{e1b1:bab(41,50,5,6,3),e1b2:bab(34,50,5,4,3),e1b3:bab(22,40,4,5,3),e1b4:bab(14,40,4,7,3)},
+    "2":{e2b1:bab(36,45,5,3,50),e2b2:bab(19,45,5,4,50),e2b3:bab(11,30,3,5,50)},
+    "3":{}
+  };
+  KEL.dimuat=true; KEL.ralat="";
+  S.guruSkrin=null;
+}
 function renderCikgu(){ pasangNama();
   var ak=$("guruAkaun"), kl=$("guruKelas");
   var untukKel=untukKeluarga();
   $("btnCikgu").textContent=untukKel?"Ibu bapa":"Cikgu";
-  var dalamKelas=!!(SESI&&PROFIL&&PROFIL.ada&&S.guruSkrin!=="katabaru"&&S.guruSkrin!=="profil"&&kelasGuruKini())||
+  var dalamKelas=!DEMO_KEL&&!!(SESI&&PROFIL&&PROFIL.ada&&S.guruSkrin!=="katabaru"&&S.guruSkrin!=="profil"&&kelasGuruKini())||
                  (!SESI&&DEMO_GURU&&S.gk==="contoh");
   ak.classList.toggle("hidden",dalamKelas);
   kl.classList.toggle("hidden",!dalamKelas);
   if(dalamKelas) return renderKelasGuru();
   ak.innerHTML="";
+  if(DEMO_KEL){
+    paneKeluarga(ak);
+    var lenc=el("p","note","Contoh paparan · data rekaan. Tiada rekod sebenar disimpan.");
+    lenc.id="lencanaDemoKel"; ak.insertBefore(lenc,ak.firstChild.nextSibling); return;
+  }
   if(!AWAN) return ak.appendChild(kadMudah(untukKeluarga()?"Memerlukan internet":"Mod cikgu perlukan internet","Sambung ke internet dan muat semula halaman."));
   if(AUTH_GAGAL){
     var bc=el("button","btn"); bc.textContent="Cuba semula";
@@ -4090,7 +4116,7 @@ function kadNilai(){
   ["Cadangan TP setiap murid, cikgu yang tentukan TP akhir",
    "Grid diagnostik: soalan yang paling ramai murid gagal",
    "Ulasan PBD sedia untuk disalin ke SPPB",
-   "Bab English Tingkatan 1 hingga 3 (Bab 1-2 setiap tingkatan percuma; Premium menengah rendah pada harga Early Bird RM23/tahun hingga 31 Dis 2026)",
+   "Bab English Tingkatan 1 hingga 5 (Bab 1-2 setiap tingkatan percuma; Premium menengah rendah atau menengah atas pada harga Early Bird RM23/tahun hingga 31 Dis 2026)",
    "Murid log masuk dengan kod kelas dan PIN, tidak perlu akaun murid"
   ].forEach(function(t){ ul.appendChild(el("li",null,esc(t))); });
   bd.appendChild(ul);
@@ -4346,7 +4372,7 @@ function semakBayaranKembali(cubaan){
   return panggilBayar({aksi:"semak",billcode:SEMAK_BIL}).then(function(j){
     if(j.status==="berjaya"){
       try{ localStorage.removeItem("cn-bil"); }catch(e){}
-      BAYAR_MESEJ={jenis:"berjaya",teks:/^panitia/.test(j.peringkat||"")?"✅ Terima kasih! Pakej panitia sudah aktif. Kod panitia ada di kad Pakej Panitia; beri kepada guru lain di sekolah cikgu.":j.peringkat==="keluarga"?"✅ Terima kasih! Anak NaikGred Keluarga sudah aktif. Semua bab English Tingkatan 1 hingga 3 dibuka untuk anak anda.":j.peringkat==="kelas"?"✅ Terima kasih! 5 kelas tambahan sudah ditambah ke akaun cikgu. Resit dihantar ke e-mel cikgu.":"✅ Terima kasih! Bayaran berjaya dan Premium sudah aktif. Resit dihantar ke e-mel cikgu."};
+      BAYAR_MESEJ={jenis:"berjaya",teks:/^panitia/.test(j.peringkat||"")?"✅ Terima kasih! Pakej panitia sudah aktif. Kod panitia ada di kad Pakej Panitia; beri kepada guru lain di sekolah cikgu.":j.peringkat==="keluarga"?"✅ Terima kasih! Anak NaikGred Keluarga sudah aktif. Semua bab English Tingkatan 1 hingga 5 dibuka untuk anak anda.":j.peringkat==="kelas"?"✅ Terima kasih! 5 kelas tambahan sudah ditambah ke akaun cikgu. Resit dihantar ke e-mel cikgu.":"✅ Terima kasih! Bayaran berjaya dan Premium sudah aktif. Resit dihantar ke e-mel cikgu."};
       return muatProfil();
     }
     if(j.status==="gagal"){ BAYAR_MESEJ={jenis:"gagal",teks:"Bayaran tidak berjaya atau dibatalkan. Tiada caj dikenakan. Cuba lagi bila-bila masa."}; return; }
@@ -4607,7 +4633,7 @@ function kadAnak(k,m){
   else if(r.lemah.length) tindak="Minggu ini, minta "+nm+" ulang <b>"+esc(labelBab(r.lemah[0].bab))+"</b> (kini "+r.lemah[0].markah+"%).";
   else tindak="Semua bab yang dicuba sudah mencapai 60% ke atas. Minta "+nm+" teruskan ke bab seterusnya.";
   bd.appendChild(el("p","kel-tindak","<b>Satu tindakan:</b> "+tindak));
-  var lb=r.lemah.length?r.lemah[0].bab:null, lbBuka=lb&&(bebasBab(lb)||premiumAktif(+(/(d)bd+$/.exec(lb)||[0,0])[1]));
+  var lb=r.lemah.length?r.lemah[0].bab:null, lbBuka=lb&&(bebasBab(lb)||premiumAktif(+(/^e(\d)b\d+$/.exec(lb)||[0,0])[1]));
   if(lb&&!lbBuka) bd.appendChild(el("p","note","Bab ini memerlukan langganan keluarga. Langgan di bawah untuk membukanya."));
   if(lbBuka){
     var bl=el("a","btn sm kel-wa"); bl.target="_blank"; bl.rel="noopener"; bl.textContent="Hantar bab ini kepada "+namaPendek(k.id,m.no)+" melalui WhatsApp";
@@ -4672,7 +4698,7 @@ function kadLangganKeluarga(){
   var p=el("div","panel kadpremium"), bd=el("div","panel-bd"); p.appendChild(bd);
   if(PROFIL.premiumRendah||PROFIL.premiumAtas){
     bd.appendChild(el("h3",null,"Anak NaikGred Keluarga aktif"));
-    bd.appendChild(el("p","note","Semua bab English Tingkatan 1 hingga 3 dibuka untuk anak anda sehingga "+tarikhPanjang(PROFIL.premiumRendahTamat||PROFIL.premiumAtasTamat)+"."));
+    bd.appendChild(el("p","note","Semua bab English Tingkatan 1 hingga 5 dibuka untuk anak anda sehingga "+tarikhPanjang(PROFIL.premiumRendahTamat||PROFIL.premiumAtasTamat)+"."));
     return p;
   }
   var awal=Date.now()<new Date("2027-01-01T00:00:00+08:00").getTime();
@@ -5985,7 +6011,8 @@ function mula(){
   render();
   lukisTalian();
   muatJauh();
-  if(qdemo==="cikgu"&&!qk&&!authUrl){ DEMO_GURU=true; S.gk="contoh"; S.tabCikgu="kelas"; tukarMod("cikgu"); }
+  if(qdemo==="keluarga"&&!qk&&!authUrl){ bukaDemoKeluarga(); tukarMod("cikgu"); }
+  else if(qdemo==="cikgu"&&!qk&&!authUrl){ DEMO_GURU=true; S.gk="contoh"; S.tabCikgu="kelas"; tukarMod("cikgu"); }
   else if((qdemo==="murid"||qdemo==="bebas")&&!qk&&!authUrl) tukarMod("murid");
   else if(authUrl||(modLama==="cikgu"&&!qk)){
     if(qdaftar&&!SESI) S.authMod="daftar";
