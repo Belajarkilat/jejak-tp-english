@@ -1,0 +1,14 @@
+{
+  "name": "jejak-tp-sejarah",
+  "private": true,
+  "description": "Jejak TP Sejarah: pentaksiran bilik darjah KSSM Sejarah, rangka kerja sama seperti Jejak TP Matematik",
+  "scripts": {
+    "bina": "node bina.js",
+    "gaya": "node tools/semak-gaya.js",
+    "uji": "node tools/uji-penuh.js s1b1 s1b2 s1b3 s1b4 s1b5 s1b6 s1b7 s1b8",
+    "semua": "npm run bina && npm run gaya"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0"
+  }
+}
