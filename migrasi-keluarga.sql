@@ -1,4 +1,4 @@
--- Mod Keluarga / Anak NaikGred untuk Sejarah (14 Okt 2026). Sama seperti Sains (lo_), tetapi Premium keluarga
+-- Mod Keluarga / Anak NaikGred untuk English (15 Okt 2026), diadaptasi daripada Sejarah. Sama seperti Sains (lo_), tetapi Premium keluarga
 -- datang daripada bayaran di Jejak TP Sains: fungsi bayar Sains memanggil mj_keluarga_sinkron(emel, tamat).
 alter table je_guru add column if not exists keluarga boolean not null default false;
 
@@ -31,18 +31,20 @@ end $$;
 revoke all on function je_keluarga_tetap() from public, anon;
 grant execute on function je_keluarga_tetap() to authenticated;
 
--- Dipanggil oleh fungsi bayar Sains selepas bayaran keluarga berjaya (idempotent).
-create or replace function mj_keluarga_sinkron(p_emel text, p_tamat timestamptz) returns void
+-- Bayaran keluarga di Jejak TP Sains memanggil mj_keluarga_sinkron(emel, tamat) yang menulis ke mj_keluarga_emel.
+-- JANGAN ganti mj_keluarga_sinkron (milik Matematik/Sejarah, hidup). English hanya melekat pada jadual itu melalui pencetus,
+-- supaya fungsi sedia ada tidak diubah: setiap baris baharu/dikemas memberi Premium keluarga kepada akaun je_guru yang sepadan.
+create or replace function je_keluarga_pencetus() returns trigger
 language plpgsql security definer set search_path = public as $$
 begin
-  insert into mj_keluarga_emel (emel, tamat) values (lower(p_emel), p_tamat)
-    on conflict (emel) do update set tamat = greatest(mj_keluarga_emel.tamat, excluded.tamat), dikemas = now();
-  update je_guru g set premium_rendah_tamat = greatest(coalesce(g.premium_rendah_tamat, '-infinity'), p_tamat),
-                       premium_atas_tamat = greatest(coalesce(g.premium_atas_tamat, '-infinity'), p_tamat)
-    from auth.users u where u.id = g.id and lower(u.email) = lower(p_emel) and g.keluarga;
+  update je_guru g set premium_rendah_tamat = greatest(coalesce(g.premium_rendah_tamat, '-infinity'), new.tamat),
+                       premium_atas_tamat = greatest(coalesce(g.premium_atas_tamat, '-infinity'), new.tamat)
+    from auth.users u where u.id = g.id and lower(u.email) = lower(new.emel) and g.keluarga;
+  return new;
 end $$;
-revoke all on function mj_keluarga_sinkron(text, timestamptz) from public, anon, authenticated;
-grant execute on function mj_keluarga_sinkron(text, timestamptz) to service_role;
+revoke all on function je_keluarga_pencetus() from public, anon, authenticated;
+drop trigger if exists je_keluarga_pencetus on mj_keluarga_emel;
+create trigger je_keluarga_pencetus after insert or update on mj_keluarga_emel for each row execute function je_keluarga_pencetus();
 
 CREATE OR REPLACE FUNCTION public.je_had_kelas()
  RETURNS trigger
