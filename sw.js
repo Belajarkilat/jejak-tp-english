@@ -9,7 +9,7 @@
    - halaman (navigasi): rangkaian dahulu (3 saat), jatuh balik ke cache
    - fail statik sama asal: cache dahulu, dikemas kini di latar (stale-while-revalidate)
    Tukar VERSI setiap kali fail app diterbitkan supaya cache lama dibuang. */
-const VERSI = "je-2026-10-14a";
+const VERSI = "je-2026-10-16a";
 const SHELL = [
   "./", "index.html", "math-ext.css", "fon/fon.css", "muzik.js", "akses.js",
   "konfig.js", "bab-indeks.js?v=1", "bank-e1b1.js?v=1"
